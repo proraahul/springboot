@@ -35,12 +35,12 @@ public class EmployeeController {
         Optional<EmployeeDTO> employeeDTO = employeeService.getEmployeeById(id);
         return employeeDTO
                 .map(employeeDTO1 -> ResponseEntity.ok(employeeDTO1))
-                .orElseThrow(() -> new ResourceNotFoundException("Employee not found with id: "+id));
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
     }
 
+
     @GetMapping
-    public ResponseEntity<List<EmployeeDTO>> getAllEmployees(@RequestParam(required = false, name = "inputAge") Integer age,
-                                                @RequestParam(required = false) String sortBy) {
+    public ResponseEntity<List<EmployeeDTO>> getAllEmployees(@RequestParam(required = false, name = "inputAge") Integer age, @RequestParam(required = false) String sortBy) {
         return ResponseEntity.ok(employeeService.getAllEmployees());
     }
 
